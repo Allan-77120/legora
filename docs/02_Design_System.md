@@ -421,6 +421,41 @@ Les radios d’un même groupe partagent exactement le même attribut `name`. Le
 - Checkbox représente un choix booléen ou plusieurs choix indépendants ; Radio impose un seul choix dans un groupe ; Select présente une option dans une liste déroulante.
 - Les espacements entre Radio, Label, aide et erreur appartiennent au conteneur parent.
 
+### Switch
+
+`Switch` représente l’activation immédiate d’une préférence ou d’une fonctionnalité binaire. Il rend un véritable `<input type="checkbox" role="switch">` et conserve ses comportements natifs.
+
+```tsx
+import { Label, Switch, type SwitchProps } from "@/components/ui";
+
+const notificationSetting: SwitchProps = {
+  id: "email-notifications",
+  name: "emailNotifications",
+  defaultChecked: true,
+};
+
+<div className="flex items-center gap-3">
+  <Switch {...notificationSetting} />
+  <Label htmlFor="email-notifications">Email notifications</Label>
+</div>;
+```
+
+L’input natif transparent couvre le rail visuel et reste présent dans l’arbre d’accessibilité. Le rail et son curseur sont décoratifs, portent `aria-hidden="true"` et suivent l’état de l’input avec les styles `peer`. La ref et `className` ciblent l’input natif.
+
+- `defaultChecked` crée un état non contrôlé ; `checked` avec `onChange` crée un état contrôlé par React.
+- Le composant ne duplique jamais `checked` dans un état interne.
+- Le clic, Tab, Espace, le focus, `disabled`, les événements et la validation restent natifs.
+- Un Switch visible doit recevoir un nom accessible via `Label`, `aria-label` ou `aria-labelledby`.
+- Un état invalide utilise `aria-invalid` et relie son message d’erreur avec `aria-describedby`.
+- Dans une liste de préférences associées, `fieldset` et `legend` fournissent un nom accessible au groupe.
+- Lors de la soumission d’un formulaire, un Switch activé envoie son `name` avec `value`, qui vaut `on` par défaut ; un Switch désactivé n’est pas envoyé.
+- `required` impose nativement l’activation du Switch avant une soumission valide.
+- L’attribut `form` permet d’associer le Switch à un formulaire externe.
+- `disabled` empêche l’interaction. Pour atténuer également le libellé, transmettre `disabled` séparément à `Label`.
+- `readOnly` est transmis, mais HTML ne rend pas un checkbox en lecture seule ; utiliser `disabled` ou un état contrôlé selon le besoin.
+- Switch convient à une préférence dont l’effet est immédiat. Checkbox convient à une confirmation, notamment l’acceptation de conditions, ou à plusieurs sélections indépendantes.
+- Les espacements entre Switch, Label, aide et erreur appartiennent au conteneur parent.
+
 ### Label
 
 `Label` rend un élément `<label>` natif destiné à identifier les champs de formulaire.

@@ -25,6 +25,7 @@ import {
   Label,
   Radio,
   Select,
+  Switch,
   Textarea,
 } from "@/components/ui";
 
@@ -288,6 +289,137 @@ export default function UIPage() {
                     Rejected
                   </Badge>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Switch
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les interrupteurs activent immédiatement une préférence ou
+                  une fonctionnalité binaire.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex items-center gap-3">
+                  <Switch id="switch-email-notifications" />
+                  <Label htmlFor="switch-email-notifications">
+                    Email notifications
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Switch id="switch-security-alerts" defaultChecked />
+                  <Label htmlFor="switch-security-alerts">
+                    Security alerts
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Switch
+                    id="switch-controlled-sharing"
+                    checked
+                    readOnly
+                  />
+                  <Label htmlFor="switch-controlled-sharing">
+                    Controlled document sharing
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Switch id="switch-disabled-notifications" disabled />
+                  <Label htmlFor="switch-disabled-notifications" disabled>
+                    Archived case notifications
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Switch
+                    id="switch-disabled-security"
+                    defaultChecked
+                    disabled
+                  />
+                  <Label htmlFor="switch-disabled-security" disabled>
+                    Enforced security alerts
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Switch
+                    id="switch-required-sharing"
+                    name="secureSharing"
+                    required
+                  />
+                  <Label
+                    htmlFor="switch-required-sharing"
+                    requiredIndicator
+                  >
+                    Secure document sharing
+                  </Label>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Switch
+                      id="switch-invalid-sharing"
+                      aria-invalid="true"
+                      aria-describedby="switch-invalid-sharing-error"
+                    />
+                    <Label htmlFor="switch-invalid-sharing">
+                      External document sharing
+                    </Label>
+                  </div>
+                  <p
+                    id="switch-invalid-sharing-error"
+                    className="text-sm text-[var(--danger)]"
+                  >
+                    Review the sharing policy before enabling this setting.
+                  </p>
+                </div>
+
+                <fieldset className="space-y-4 rounded-[var(--radius-md)] border border-[var(--border)] p-4 md:col-span-2">
+                  <legend className="px-1 text-sm font-medium text-[var(--text-primary)]">
+                    Communication preferences
+                  </legend>
+
+                  <div className="flex items-center gap-3">
+                    <Switch
+                      id="switch-group-client-updates"
+                      name="clientUpdates"
+                      defaultChecked
+                    />
+                    <Label htmlFor="switch-group-client-updates">
+                      Client updates
+                    </Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Switch
+                      id="switch-group-deadline-reminders"
+                      name="deadlineReminders"
+                    />
+                    <Label htmlFor="switch-group-deadline-reminders">
+                      Deadline reminders
+                    </Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Switch
+                      id="switch-group-document-alerts"
+                      name="documentAlerts"
+                      defaultChecked
+                    />
+                    <Label htmlFor="switch-group-document-alerts">
+                      Document activity alerts
+                    </Label>
+                  </div>
+                </fieldset>
               </div>
             </div>
           </section>
