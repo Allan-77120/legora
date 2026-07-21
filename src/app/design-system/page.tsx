@@ -9,6 +9,7 @@ import {
   Checkbox,
   Input,
   Label,
+  Radio,
   Select,
   Textarea,
 } from "@/components/ui";
@@ -46,6 +47,206 @@ export default function UIPage() {
                 <Button type="button" disabled>
                   Button Disabled
                 </Button>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Radio
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les boutons radio permettent de sélectionner une seule option
+                  dans un groupe natif.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-standard-priority"
+                    name="priority-example"
+                    value="standard"
+                  />
+                  <Label htmlFor="radio-standard-priority">
+                    Standard priority
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-urgent-priority"
+                    name="default-priority-example"
+                    value="urgent"
+                    defaultChecked
+                  />
+                  <Label htmlFor="radio-urgent-priority">
+                    Urgent priority
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-controlled-selection"
+                    name="controlled-radio-example"
+                    value="selected"
+                    checked
+                    readOnly
+                  />
+                  <Label htmlFor="radio-controlled-selection">
+                    Controlled selection
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-disabled-unchecked"
+                    name="disabled-unchecked-example"
+                    disabled
+                  />
+                  <Label htmlFor="radio-disabled-unchecked" disabled>
+                    Archived matter
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-disabled-checked"
+                    name="disabled-checked-example"
+                    defaultChecked
+                    disabled
+                  />
+                  <Label htmlFor="radio-disabled-checked" disabled>
+                    Closed matter
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Radio
+                    id="radio-required-priority"
+                    name="required-priority-example"
+                    required
+                  />
+                  <Label
+                    htmlFor="radio-required-priority"
+                    requiredIndicator
+                  >
+                    Case priority
+                  </Label>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Radio
+                      id="radio-invalid-priority"
+                      name="invalid-priority-example"
+                      aria-invalid="true"
+                      aria-describedby="radio-invalid-priority-error"
+                    />
+                    <Label htmlFor="radio-invalid-priority">
+                      Urgent priority
+                    </Label>
+                  </div>
+                  <p
+                    id="radio-invalid-priority-error"
+                    className="text-sm text-[var(--danger)]"
+                  >
+                    Select a valid case priority.
+                  </p>
+                </div>
+
+                <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-[var(--border)] p-4 md:col-span-2">
+                  <legend className="px-1 text-sm font-medium text-[var(--text-primary)]">
+                    Case priority
+                  </legend>
+
+                  <div className="flex items-center gap-3">
+                    <Radio
+                      id="radio-group-low"
+                      name="case-priority"
+                      value="low"
+                    />
+                    <Label htmlFor="radio-group-low">Low</Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Radio
+                      id="radio-group-standard"
+                      name="case-priority"
+                      value="standard"
+                      defaultChecked
+                    />
+                    <Label htmlFor="radio-group-standard">Standard</Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Radio
+                      id="radio-group-urgent"
+                      name="case-priority"
+                      value="urgent"
+                    />
+                    <Label htmlFor="radio-group-urgent">Urgent</Label>
+                  </div>
+                </fieldset>
+
+                <div className="grid gap-6 md:col-span-2 md:grid-cols-2">
+                  <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-[var(--border)] p-4">
+                    <legend className="px-1 text-sm font-medium text-[var(--text-primary)]">
+                      Client category
+                    </legend>
+
+                    <div className="flex items-center gap-3">
+                      <Radio
+                        id="radio-client-individual"
+                        name="client-category"
+                        value="individual"
+                        defaultChecked
+                      />
+                      <Label htmlFor="radio-client-individual">
+                        Individual
+                      </Label>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Radio
+                        id="radio-client-company"
+                        name="client-category"
+                        value="company"
+                      />
+                      <Label htmlFor="radio-client-company">Company</Label>
+                    </div>
+                  </fieldset>
+
+                  <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-[var(--border)] p-4">
+                    <legend className="px-1 text-sm font-medium text-[var(--text-primary)]">
+                      Review language
+                    </legend>
+
+                    <div className="flex items-center gap-3">
+                      <Radio
+                        id="radio-language-english"
+                        name="review-language"
+                        value="english"
+                        defaultChecked
+                      />
+                      <Label htmlFor="radio-language-english">
+                        English
+                      </Label>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Radio
+                        id="radio-language-french"
+                        name="review-language"
+                        value="french"
+                      />
+                      <Label htmlFor="radio-language-french">French</Label>
+                    </div>
+                  </fieldset>
+                </div>
               </div>
             </div>
           </section>

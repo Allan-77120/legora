@@ -196,6 +196,64 @@ import { Checkbox, Label } from "@/components/ui";
 - Checkbox sert aux choix booléens ou multiples ; Select sert à choisir une valeur dans une liste prédéfinie.
 - L’espacement et les textes d’aide ou d’erreur appartiennent au conteneur parent.
 
+### Radio
+
+`Radio` est le bouton radio natif du Design System. Son API accepte les attributs d’un `<input>`, à l’exception de `type`, qui reste toujours fixé à `radio`.
+
+```tsx
+import { Label, Radio, type RadioProps } from "@/components/ui";
+
+const option: RadioProps = {
+  id: "priority-standard",
+  name: "case-priority",
+  value: "standard",
+  defaultChecked: true,
+};
+
+<div className="flex items-center gap-3">
+  <Radio {...option} />
+  <Label htmlFor="priority-standard">Standard priority</Label>
+</div>;
+```
+
+Les radios d’un même groupe partagent exactement le même attribut `name`. Le navigateur assure alors leur sélection exclusive : sélectionner une option désélectionne automatiquement la précédente, sans contexte React ni logique de groupe supplémentaire.
+
+```tsx
+<fieldset className="space-y-3">
+  <legend>Case priority</legend>
+
+  <div className="flex items-center gap-3">
+    <Radio
+      id="priority-low"
+      name="case-priority"
+      value="low"
+    />
+    <Label htmlFor="priority-low">Low</Label>
+  </div>
+
+  <div className="flex items-center gap-3">
+    <Radio
+      id="priority-urgent"
+      name="case-priority"
+      value="urgent"
+    />
+    <Label htmlFor="priority-urgent">Urgent</Label>
+  </div>
+</fieldset>;
+```
+
+- `defaultChecked` crée un état non contrôlé ; `checked` avec `onChange` crée un état contrôlé par React.
+- `name` définit le groupe natif et `value` est la valeur envoyée avec ce nom lors de la soumission du formulaire.
+- Seul le Radio sélectionné est inclus dans les données du formulaire ; les options non sélectionnées sont omises.
+- `required` utilise la validation native du groupe : une des options partageant le même `name` doit être sélectionnée.
+- `disabled` empêche l’interaction native. Pour atténuer également le libellé, transmettre `disabled` séparément à `Label`.
+- `readOnly` est transmis, mais HTML ne rend pas les boutons radio en lecture seule ; utiliser `disabled` ou un état contrôlé selon le besoin.
+- Un état invalide utilise `aria-invalid` et relie son message avec `aria-describedby`.
+- Chaque Radio visible doit recevoir un nom accessible via `Label`, `aria-label` ou `aria-labelledby`.
+- Un groupe accessible utilise `fieldset` et `legend`, sans ajouter de rôle ARIA à l’input natif.
+- Checkbox représente un choix booléen ou plusieurs choix indépendants ; Radio impose un seul choix dans un groupe ; Select présente une option dans une liste déroulante.
+- Les espacements entre Radio, Label, aide et erreur appartiennent au conteneur parent.
+
 ### Label
 
 `Label` rend un élément `<label>` natif destiné à identifier les champs de formulaire.
