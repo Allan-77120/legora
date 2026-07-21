@@ -149,6 +149,31 @@ import { Label, Textarea } from "@/components/ui";
 - Un nom accessible doit être fourni avec `Label` ou un attribut ARIA.
 - L’espacement avec le libellé, l’aide ou l’erreur appartient au conteneur parent.
 
+### Select
+
+`Select` est le champ de sélection native non recherchable du Design System.
+
+```tsx
+import { Label, Select } from "@/components/ui";
+
+<div className="space-y-2">
+  <Label htmlFor="case-type">Case type</Label>
+  <Select id="case-type" defaultValue="">
+    <option value="" disabled>
+      Select a case type
+    </option>
+    <option value="civil">Civil litigation</option>
+    <option value="commercial">Commercial law</option>
+  </Select>
+</div>;
+```
+
+- Les consommateurs utilisent directement les éléments natifs `option` et `optgroup`.
+- Une option vide et désactivée doit être ajoutée explicitement pour simuler un placeholder.
+- `multiple` et `size` conservent le comportement natif de liste.
+- Un nom accessible doit être fourni avec `Label` ou un attribut ARIA.
+- L’espacement avec le libellé, l’aide ou l’erreur appartient au conteneur parent.
+
 ### Label
 
 `Label` rend un élément `<label>` natif destiné à identifier les champs de formulaire.

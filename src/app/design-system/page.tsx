@@ -8,6 +8,7 @@ import {
   CardTitle,
   Input,
   Label,
+  Select,
   Textarea,
 } from "@/components/ui";
 
@@ -356,6 +357,165 @@ export default function UIPage() {
                     type="search"
                     placeholder="Search by document name or case reference"
                   />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">Select</h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les listes natives permettent de sélectionner des valeurs
+                  juridiques prédéfinies.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="select-default-case-type">Case type</Label>
+                  <Select id="select-default-case-type">
+                    <option value="civil">Civil litigation</option>
+                    <option value="commercial">Commercial law</option>
+                    <option value="employment">Employment law</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-placeholder-jurisdiction">
+                    Jurisdiction
+                  </Label>
+                  <Select
+                    id="select-placeholder-jurisdiction"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select a jurisdiction
+                    </option>
+                    <option value="paris">Paris</option>
+                    <option value="lyon">Lyon</option>
+                    <option value="marseille">Marseille</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-preselected-case-status">
+                    Case status
+                  </Label>
+                  <Select
+                    id="select-preselected-case-status"
+                    defaultValue="in-review"
+                  >
+                    <option value="open">Open</option>
+                    <option value="in-review">In review</option>
+                    <option value="closed">Closed</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-disabled-jurisdiction" disabled>
+                    Jurisdiction
+                  </Label>
+                  <Select
+                    id="select-disabled-jurisdiction"
+                    defaultValue="paris"
+                    disabled
+                  >
+                    <option value="paris">Paris</option>
+                    <option value="lyon">Lyon</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="select-required-client-category"
+                    requiredIndicator
+                  >
+                    Client category
+                  </Label>
+                  <Select
+                    id="select-required-client-category"
+                    defaultValue=""
+                    required
+                  >
+                    <option value="" disabled>
+                      Select a client category
+                    </option>
+                    <option value="individual">Individual</option>
+                    <option value="company">Company</option>
+                    <option value="public-body">Public body</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-invalid-task-priority">
+                    Task priority
+                  </Label>
+                  <Select
+                    id="select-invalid-task-priority"
+                    defaultValue=""
+                    aria-invalid="true"
+                    aria-describedby="select-invalid-task-priority-error"
+                  >
+                    <option value="" disabled>
+                      Select a priority
+                    </option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </Select>
+                  <p
+                    id="select-invalid-task-priority-error"
+                    className="text-sm text-[var(--danger)]"
+                  >
+                    Select a priority for this task.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-optgroup-document-category">
+                    Document category
+                  </Label>
+                  <Select id="select-optgroup-document-category">
+                    <optgroup label="Case documents">
+                      <option value="contract">Contract</option>
+                      <option value="evidence">Evidence</option>
+                      <option value="pleading">Pleading</option>
+                    </optgroup>
+                    <optgroup label="Communications">
+                      <option value="email">Email</option>
+                      <option value="letter">Letter</option>
+                    </optgroup>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="select-multiple-team-roles">Team roles</Label>
+                  <Select
+                    id="select-multiple-team-roles"
+                    defaultValue={["owner", "reviewer"]}
+                    multiple
+                  >
+                    <option value="owner">Case owner</option>
+                    <option value="lawyer">Lawyer</option>
+                    <option value="reviewer">Reviewer</option>
+                    <option value="assistant">Legal assistant</option>
+                  </Select>
+                </div>
+
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="select-sized-document-category">
+                    Document category
+                  </Label>
+                  <Select id="select-sized-document-category" size={5}>
+                    <option value="contract">Contract</option>
+                    <option value="evidence">Evidence</option>
+                    <option value="correspondence">Correspondence</option>
+                    <option value="pleading">Pleading</option>
+                    <option value="other">Other</option>
+                  </Select>
                 </div>
               </div>
             </div>
