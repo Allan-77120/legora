@@ -116,6 +116,68 @@ La famille `Card` regroupe :
 
 Ces composants sont indépendants et composables. Ils ne partagent aucun état implicite et n’imposent aucune donnée métier.
 
+### Input
+
+`Input` rend un élément `<input>` natif.
+
+- Son type par défaut est `text`.
+- Tous les attributs d’input natifs et les attributs ARIA sont acceptés.
+- La ref cible l’élément `<input>`.
+- Les états hover, focus-visible, disabled, invalid et placeholder sont intégrés.
+- Un libellé accessible doit être associé avec un élément `<label>` ou un attribut ARIA approprié.
+
+### Textarea
+
+`Textarea` est le champ multiligne natif du Design System.
+
+```tsx
+import { Label, Textarea } from "@/components/ui";
+
+<div className="space-y-2">
+  <Label htmlFor="legal-analysis">Legal analysis</Label>
+  <Textarea
+    id="legal-analysis"
+    rows={6}
+    placeholder="Add the relevant legal analysis"
+  />
+</div>;
+```
+
+- Tous les attributs natifs d’un `<textarea>`, dont `rows`, sont acceptés.
+- Le redimensionnement est limité à l’axe vertical.
+- L’état invalide utilise `aria-invalid` et peut être décrit avec `aria-describedby`.
+- Un nom accessible doit être fourni avec `Label` ou un attribut ARIA.
+- L’espacement avec le libellé, l’aide ou l’erreur appartient au conteneur parent.
+
+### Label
+
+`Label` rend un élément `<label>` natif destiné à identifier les champs de formulaire.
+
+```tsx
+import { Input, Label } from "@/components/ui";
+
+<div className="space-y-2">
+  <Label htmlFor="client-email" requiredIndicator>
+    Email
+  </Label>
+  <Input id="client-email" type="email" required />
+</div>;
+```
+
+```tsx
+<Label htmlFor="disabled-email" disabled>
+  Email
+</Label>
+<Input id="disabled-email" type="email" disabled />
+```
+
+- `htmlFor` doit correspondre à l’`id` du champ associé.
+- `requiredIndicator` ajoute uniquement une étoile visuelle utilisant le token `--danger` ; il ne rend pas automatiquement le champ obligatoire.
+- L’étoile est masquée aux technologies d’assistance et ne modifie pas le nom accessible.
+- `disabled` est un état visuel explicite du `Label` ; le champ associé doit recevoir sa propre prop `disabled`.
+- `Label` n’infère pas l’état du champ associé et peut rester avant celui-ci dans l’ordre naturel du DOM.
+- L’espacement entre le libellé et le champ reste sous la responsabilité du conteneur parent.
+
 ## Accessibilité
 
 - Utiliser les éléments HTML natifs avant d’ajouter des rôles ARIA.
