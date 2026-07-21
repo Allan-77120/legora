@@ -116,6 +116,58 @@ La famille `Card` regroupe :
 
 Ces composants sont indépendants et composables. Ils ne partagent aucun état implicite et n’imposent aucune donnée métier.
 
+### Badge
+
+`Badge` affiche un statut, une catégorie ou une information courte dans un élément `<span>` compact. Il reste purement présentationnel et n’ajoute aucun comportement interactif ni rôle ARIA par défaut.
+
+```tsx
+import { Check } from "lucide-react";
+
+import { Badge } from "@/components/ui";
+
+<Badge variant="success" icon={<Check />}>
+  Paid
+</Badge>;
+```
+
+#### API
+
+```tsx
+type BadgeVariant =
+  | "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "neutral";
+
+type BadgeSize = "sm" | "md";
+```
+
+`BadgeProps` étend les attributs natifs d’un `<span>` et accepte `variant`, `size` et `icon`. Les valeurs par défaut sont `variant="default"` et `size="md"`.
+
+| Variante | Usage recommandé |
+|---|---|
+| `default` | Information générale ou brouillon |
+| `primary` | Statut actif lié à l’action principale |
+| `success` | Résultat positif ou paiement effectué |
+| `warning` | État en attente ou nécessitant une attention |
+| `danger` | Échec, rejet ou état critique |
+| `neutral` | État inactif, historique ou archivé |
+
+| Taille | Usage |
+|---|---|
+| `sm` | Listes denses et tableaux, hauteur compacte et texte de 12 px |
+| `md` | Interfaces courantes, hauteur confortable et texte de 14 px |
+
+- Le texte doit rester court, explicite et compréhensible sans dépendre uniquement de la couleur.
+- L’icône facultative précède toujours le contenu et est masquée aux technologies d’assistance pour éviter une annonce en double.
+- Badge ne remplace pas un bouton ou un lien. Une action doit utiliser un composant interactif sémantique.
+- Ne pas ajouter `role="status"` à un état statique. Ce rôle est réservé aux informations réellement mises à jour dynamiquement.
+- Choisir une variante selon la signification du statut, pas uniquement selon une préférence visuelle.
+- Les hauteurs sont fixes ; le contenu reste sur une ligne afin de préserver l’alignement vertical.
+- L’espacement extérieur entre plusieurs badges appartient au conteneur parent.
+
 ### Input
 
 `Input` rend un élément `<input>` natif.

@@ -1,4 +1,7 @@
+import { Check, Clock, FileText, X } from "lucide-react";
+
 import {
+  Badge,
   Button,
   Card,
   CardContent,
@@ -47,6 +50,60 @@ export default function UIPage() {
                 <Button type="button" disabled>
                   Button Disabled
                 </Button>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Badge
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les badges identifient rapidement un statut ou une catégorie.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
+                  Variants
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <Badge variant="default">Draft</Badge>
+                  <Badge variant="primary">Under review</Badge>
+                  <Badge variant="success">Paid</Badge>
+                  <Badge variant="warning">Pending</Badge>
+                  <Badge variant="danger">Rejected</Badge>
+                  <Badge variant="neutral">Archived</Badge>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
+                  Sizes and icons
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <Badge
+                    variant="default"
+                    size="sm"
+                    icon={<FileText />}
+                  >
+                    Draft
+                  </Badge>
+                  <Badge variant="warning" size="sm" icon={<Clock />}>
+                    Pending
+                  </Badge>
+                  <Badge variant="success" size="md" icon={<Check />}>
+                    Paid
+                  </Badge>
+                  <Badge variant="danger" size="md" icon={<X />}>
+                    Rejected
+                  </Badge>
+                </div>
               </div>
             </div>
           </section>
