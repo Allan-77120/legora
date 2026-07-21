@@ -1,6 +1,16 @@
-import { Check, Clock, FileText, X } from "lucide-react";
+import {
+  Check,
+  CheckCircle2,
+  Clock,
+  FileText,
+  Info,
+  TriangleAlert,
+  WifiOff,
+  X,
+} from "lucide-react";
 
 import {
+  Alert,
   Badge,
   Button,
   Card,
@@ -50,6 +60,62 @@ export default function UIPage() {
                 <Button type="button" disabled>
                   Button Disabled
                 </Button>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Alert
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les alertes communiquent un événement ou une information qui
+                  nécessite l’attention de l’utilisateur.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <Alert
+                  variant="info"
+                  title="AI analysis completed"
+                  icon={<Info />}
+                >
+                  The generated summary is ready for legal review.
+                </Alert>
+
+                <Alert
+                  variant="success"
+                  title="Document saved successfully"
+                  icon={<CheckCircle2 />}
+                >
+                  The latest version is now available to your team.
+                </Alert>
+
+                <Alert
+                  variant="warning"
+                  title="Missing required information"
+                  icon={<TriangleAlert />}
+                  action={
+                    <Button type="button" className="h-8 px-3 text-xs">
+                      Review fields
+                    </Button>
+                  }
+                >
+                  Add the client reference before submitting this case.
+                </Alert>
+
+                <Alert
+                  variant="danger"
+                  title="Connection lost"
+                  icon={<WifiOff />}
+                  dismissible
+                >
+                  Changes cannot be synchronized until the connection is
+                  restored.
+                </Alert>
               </div>
             </div>
           </section>

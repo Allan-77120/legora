@@ -168,6 +168,73 @@ type BadgeSize = "sm" | "md";
 - Les hauteurs sont fixes ; le contenu reste sur une ligne afin de préserver l’alignement vertical.
 - L’espacement extérieur entre plusieurs badges appartient au conteneur parent.
 
+### Alert
+
+`Alert` communique une information importante, le résultat d’une opération ou un problème nécessitant l’attention de l’utilisateur. Le composant reste contrôlé par son parent et ne masque jamais son propre contenu.
+
+```tsx
+import { CheckCircle2 } from "lucide-react";
+
+import { Alert } from "@/components/ui";
+
+<Alert
+  variant="success"
+  title="Document saved successfully"
+  icon={<CheckCircle2 />}
+>
+  The latest version is now available to your team.
+</Alert>;
+```
+
+#### API
+
+```tsx
+type AlertVariant = "info" | "success" | "warning" | "danger";
+
+interface AlertProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+  variant?: AlertVariant;
+  title?: React.ReactNode;
+  icon?: React.ReactNode;
+  action?: React.ReactNode;
+  dismissible?: boolean;
+  onDismiss?: () => void;
+}
+```
+
+Les `children` constituent la description. `variant` vaut `info` par défaut. Le `title` natif du `<div>` est volontairement omis de la signature, car cette prop accueille le titre visuel sous forme de `ReactNode`.
+
+| Variante | Rôle | Usage recommandé |
+|---|---|---|
+| `info` | `status` | Information contextuelle ou résultat d’un traitement |
+| `success` | `status` | Opération terminée avec succès |
+| `warning` | `alert` | Information manquante ou action prochainement requise |
+| `danger` | `alert` | Échec, perte de connexion ou problème critique |
+
+- Les icônes sont décoratives par défaut et masquées aux technologies d’assistance.
+- Le bouton de fermeture possède un nom accessible, accepte le focus et fonctionne au clavier.
+- `onDismiss` est facultatif et n’introduit aucun état interne. Le parent décide quand retirer l’alerte du rendu.
+- `action` accepte un élément React ; cet élément reste responsable de sa propre sémantique et de son comportement.
+- Les variantes `warning` et `danger` utilisent `role="alert"` pour une annonce prioritaire.
+- Les variantes `info` et `success` utilisent `role="status"` pour une annonce non interruptive.
+- Une alerte déjà présente au chargement ne doit pas être utilisée comme substitut à un titre de page ou à une validation inline de champ.
+
+#### Bonnes pratiques
+
+À faire :
+
+- utiliser un titre court et une description qui explique la prochaine étape ;
+- choisir la variante selon la gravité réelle du message ;
+- conserver les actions explicites, par exemple « Review fields » ou « Retry » ;
+- rendre une alerte dismissible uniquement lorsque l’utilisateur peut raisonnablement l’ignorer.
+
+À éviter :
+
+- utiliser `danger` pour une information non critique ;
+- placer plusieurs actions concurrentes dans une même alerte ;
+- transmettre une icône contenant la seule information permettant de comprendre le message ;
+- attendre du bouton de fermeture qu’il masque automatiquement l’alerte sans mise à jour du parent.
+
 ### Input
 
 `Input` rend un élément `<input>` natif.
