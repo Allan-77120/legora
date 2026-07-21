@@ -174,6 +174,28 @@ import { Label, Select } from "@/components/ui";
 - Un nom accessible doit être fourni avec `Label` ou un attribut ARIA.
 - L’espacement avec le libellé, l’aide ou l’erreur appartient au conteneur parent.
 
+### Checkbox
+
+`Checkbox` est le contrôle booléen natif du Design System.
+
+```tsx
+import { Checkbox, Label } from "@/components/ui";
+
+<div className="flex items-center gap-3">
+  <Checkbox id="client-consent" defaultChecked />
+  <Label htmlFor="client-consent">Client consent obtained</Label>
+</div>;
+```
+
+- `Checkbox` et `Label` restent deux composants séparés, associés avec `id` et `htmlFor`.
+- `defaultChecked` crée un état non contrôlé ; `checked` avec `onChange` crée un état contrôlé.
+- Pour un état désactivé visuellement et nativement, `disabled` doit être transmis séparément aux deux composants.
+- `indeterminate` pilote uniquement la propriété visuelle native et ne remplace pas `checked`.
+- Un groupe utilise `fieldset`, `legend` et plusieurs Checkbox indépendantes.
+- Un état invalide utilise `aria-invalid` et `aria-describedby`.
+- Checkbox sert aux choix booléens ou multiples ; Select sert à choisir une valeur dans une liste prédéfinie.
+- L’espacement et les textes d’aide ou d’erreur appartiennent au conteneur parent.
+
 ### Label
 
 `Label` rend un élément `<label>` natif destiné à identifier les champs de formulaire.

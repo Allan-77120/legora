@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  Checkbox,
   Input,
   Label,
   Select,
@@ -517,6 +518,138 @@ export default function UIPage() {
                     <option value="other">Other</option>
                   </Select>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Checkbox
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les cases à cocher représentent des choix booléens ou des
+                  sélections multiples.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="flex items-center gap-3">
+                  <Checkbox id="checkbox-client-consent" />
+                  <Label htmlFor="checkbox-client-consent">
+                    Client consent obtained
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox
+                    id="checkbox-task-completed"
+                    checked
+                    readOnly
+                  />
+                  <Label htmlFor="checkbox-task-completed">
+                    Mark task as completed
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox
+                    id="checkbox-email-notifications"
+                    defaultChecked
+                  />
+                  <Label htmlFor="checkbox-email-notifications">
+                    Send email notifications
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox id="checkbox-archived-cases" disabled />
+                  <Label htmlFor="checkbox-archived-cases" disabled>
+                    Include archived cases
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox
+                    id="checkbox-confidential-attachments"
+                    defaultChecked
+                    disabled
+                  />
+                  <Label htmlFor="checkbox-confidential-attachments" disabled>
+                    Include confidential attachments
+                  </Label>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox id="checkbox-processing-terms" required />
+                  <Label
+                    htmlFor="checkbox-processing-terms"
+                    requiredIndicator
+                  >
+                    Accept data processing terms
+                  </Label>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <Checkbox
+                      id="checkbox-invalid-consent"
+                      aria-invalid="true"
+                      aria-describedby="checkbox-invalid-consent-error"
+                    />
+                    <Label htmlFor="checkbox-invalid-consent">
+                      Client consent obtained
+                    </Label>
+                  </div>
+                  <p
+                    id="checkbox-invalid-consent-error"
+                    className="text-sm text-[var(--danger)]"
+                  >
+                    Confirm client consent before continuing.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Checkbox
+                    id="checkbox-select-all-documents"
+                    indeterminate
+                  />
+                  <Label htmlFor="checkbox-select-all-documents">
+                    Select all documents
+                  </Label>
+                </div>
+
+                <fieldset className="space-y-3 rounded-[var(--radius-md)] border border-[var(--border)] p-4 md:col-span-2">
+                  <legend className="px-1 text-sm font-medium text-[var(--text-primary)]">
+                    Document selection
+                  </legend>
+
+                  <div className="flex items-center gap-3">
+                    <Checkbox
+                      id="checkbox-group-contract"
+                      defaultChecked
+                    />
+                    <Label htmlFor="checkbox-group-contract">
+                      Contract documents
+                    </Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Checkbox id="checkbox-group-evidence" />
+                    <Label htmlFor="checkbox-group-evidence">
+                      Evidence documents
+                    </Label>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <Checkbox id="checkbox-group-correspondence" />
+                    <Label htmlFor="checkbox-group-correspondence">
+                      Client correspondence
+                    </Label>
+                  </div>
+                </fieldset>
               </div>
             </div>
           </section>
