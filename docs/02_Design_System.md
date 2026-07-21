@@ -235,6 +235,54 @@ Les `children` constituent la description. `variant` vaut `info` par défaut. Le
 - transmettre une icône contenant la seule information permettant de comprendre le message ;
 - attendre du bouton de fermeture qu’il masque automatiquement l’alerte sans mise à jour du parent.
 
+### Container
+
+`Container` est le wrapper horizontal de référence pour les pages, tableaux de bord et écrans applicatifs. Il limite la largeur du contenu, applique un padding horizontal responsive et reste volontairement neutre sur le plan visuel et sémantique.
+
+```tsx
+import { Container } from "@/components/ui";
+
+<Container size="lg" padding="lg">
+  <main>Case workspace</main>
+</Container>;
+```
+
+#### API
+
+```tsx
+type ContainerSize = "sm" | "md" | "lg" | "xl" | "full";
+type ContainerPadding = "none" | "sm" | "md" | "lg";
+
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: ContainerSize;
+  padding?: ContainerPadding;
+  centered?: boolean;
+}
+```
+
+Par défaut, `size` vaut `xl`, `padding` vaut `md` et `centered` vaut `true`. La ref cible directement le `<div>` natif. Tous ses attributs HTML, ses événements et `className` sont transmis et fusionnés avec `cn()`.
+
+| Taille | Largeur maximale |
+|---|---|
+| `sm` | `screen-sm` |
+| `md` | `screen-md` |
+| `lg` | `screen-lg` |
+| `xl` | `screen-xl` |
+| `full` | Aucune largeur maximale |
+
+| Padding | Comportement horizontal |
+|---|---|
+| `none` | Aucun padding |
+| `sm` | Petit padding constant |
+| `md` | Petit sur mobile, moyen à partir de `sm` |
+| `lg` | Petit sur mobile, moyen à partir de `sm`, large à partir de `lg` |
+
+- Utiliser `centered={false}` uniquement lorsqu’un alignement sur le bord du parent est nécessaire.
+- Le composant n’ajoute aucun rôle ARIA : utiliser les éléments sémantiques appropriés (`main`, `section`, `nav`) à l’intérieur ou transmettre un rôle seulement si le contexte l’exige.
+- Le fond, les bordures, la hauteur et les espacements verticaux appartiennent au contenu ou au layout parent.
+- Préférer les props `size` et `padding` aux surcharges de classes pour maintenir une mise en page cohérente.
+- Utiliser `full` pour les interfaces qui doivent occuper toute la largeur disponible, comme certains tableaux ou espaces de travail.
+
 ### Input
 
 `Input` rend un élément `<input>` natif.

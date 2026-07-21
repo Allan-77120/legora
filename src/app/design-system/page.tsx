@@ -20,6 +20,7 @@ import {
   CardHeader,
   CardTitle,
   Checkbox,
+  Container,
   Input,
   Label,
   Radio,
@@ -60,6 +61,123 @@ export default function UIPage() {
                 <Button type="button" disabled>
                   Button Disabled
                 </Button>
+              </div>
+            </div>
+          </section>
+
+          <section className="rounded-[16px] border border-[#E5E7EB] bg-white p-8">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-semibold text-slate-950">
+                  Container
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-600">
+                  Les conteneurs limitent la largeur du contenu et appliquent
+                  un espacement horizontal responsive cohérent.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
+                  Sizes
+                </p>
+
+                <div className="space-y-3 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--background)] py-4">
+                  <Container
+                    size="sm"
+                    padding="sm"
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Small container
+                  </Container>
+                  <Container
+                    size="md"
+                    padding="sm"
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Medium container
+                  </Container>
+                  <Container
+                    size="lg"
+                    padding="sm"
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Large container
+                  </Container>
+                  <Container
+                    size="xl"
+                    padding="sm"
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Extra-large container
+                  </Container>
+                  <Container
+                    size="full"
+                    padding="sm"
+                    className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Full-width container
+                  </Container>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
+                  Responsive padding
+                </p>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Container
+                    size="full"
+                    padding="none"
+                    centered={false}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    No horizontal padding
+                  </Container>
+                  <Container
+                    size="full"
+                    padding="sm"
+                    centered={false}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Small padding
+                  </Container>
+                  <Container
+                    size="full"
+                    padding="md"
+                    centered={false}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Medium responsive padding
+                  </Container>
+                  <Container
+                    size="full"
+                    padding="lg"
+                    centered={false}
+                    className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--surface)] py-3 text-center text-sm text-[var(--text-secondary)]"
+                  >
+                    Large responsive padding
+                  </Container>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm font-medium text-[var(--text-primary)]">
+                  Alignment
+                </p>
+
+                <div className="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--background)] py-4">
+                  <Container
+                    size="sm"
+                    padding="sm"
+                    centered={false}
+                    className="rounded-r-[var(--radius-sm)] bg-[var(--primary-soft)] py-3 text-sm font-medium text-[var(--primary)]"
+                  >
+                    Non-centered container
+                  </Container>
+                </div>
               </div>
             </div>
           </section>
